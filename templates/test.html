@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type= "text/css" href="/static/crypto.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+        $(function () {
+            $('#Select1').bind('change', function () {
+                $.getJSON('/background_process_test',
+                    function (data) {
+                        //do nothing
+                    });
+                return false;
+            });
+        });
+    </script>
+</head>
+<title> Plot</title>
+<body>
+{% if plot_url != None %}
+    <a href=# id=test><button class='btn btn-default'>Test</button></a>
+<img src="data:image/png;base64,{{ plot_url }}">
+{% endif %}
+    <table class="tradeTbl"><tr><td>test</td><td>2</td><td>3</td></tr><tr><td>4</td><td>5</td><td>6</td></tr><tr><td>7</td><td>8</td><td>9</td></tr></table>
+    <label class="lbl3">THIS IS A TEST</label>
+    <input type="text" id="txt_ide" list="ide" />
+    <datalist id="ide">
+        <option value="Brackets" />
+        <option value="Coda" />
+        <option value="Dreamweaver" />
+        <option value="Espresso" />
+        <option value="jEdit" />
+        <option value="Komodo Edit" />
+        <option value="Notepad++" />
+        <option value="Sublime Text 2" />
+        <option value="Taco HTML Edit" />
+        <option value="Textmate" />
+        <option value="Text Pad" />
+        <option value="TextWrangler" />
+        <option value="Visual Studio" />
+        <option value="VIM" />
+        <option value="XCode" />
+    </datalist>
+
+    <div class='container'>
+        <h3>Test</h3>
+        <form>
+            <select id="Select1">
+                <option value="1">test2 </option>
+                <option value="0">test1 </option>
+            </select>
+            <a href=# id=test class='btn btn-default' role="button">Trade</a>
+        </form>
+
+    </div>
+</body>
+</html>
+
+<img src="data:image/png;base64,{{ result }}">
