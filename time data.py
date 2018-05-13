@@ -33,7 +33,7 @@ def predict():
         pre_spike = pre_spike.append(pre_market_info, ignore_index=True)
         
     for o in currencies:
-        post_market_info = pd.read_html("https://coinmarketcap.com/currencies/"+m+"/historical-data/?start="+spike_date+"&end="+time.strftime("%Y%m%d"))[0]
+        post_market_info = pd.read_html("https://coinmarketcap.com/currencies/"+o+"/historical-data/?start="+spike_date+"&end="+time.strftime("%Y%m%d"))[0]
         post_market_info['Volume'] = post_market_info['Volume'].astype('int64')
         post_market_info["Coin"] = o
         post_spike = post_spike.append(post_market_info, ignore_index=True)
