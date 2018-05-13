@@ -28,6 +28,7 @@ def predict():
         
     for n in currencies:
         pre_market_info = pd.read_html("https://coinmarketcap.com/currencies/"+n+"/historical-data/?start=201501010&end="+spike_date)[0]
+        pre_market_info.loc[pre_market_info['Volume']=="-",'Volume']=0
         pre_market_info['Volume'] = pre_market_info['Volume'].astype('int64')
         pre_market_info["Coin"] = n
         pre_spike = pre_spike.append(pre_market_info, ignore_index=True)
