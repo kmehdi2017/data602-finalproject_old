@@ -1,4 +1,6 @@
-from fbprophet import Prophet 
+from fbprophet import Prophet
+import pandas as pd 
+import time
 
 m = Prophet()
 eth_m = Prophet()
@@ -32,14 +34,14 @@ eth_data = eth_market_info[['ds', 'y']].copy()
 m.fit(forecast_data)
 eth_m.fit(eth_data)
 
-future = m.make_future_dataframe(periods=5, freq='D')
+future = m.make_future_dataframe(periods=7, freq='D')
 
 
 forecast = m.predict(future)
 eth_forecast = eth_m.predict(future)
 
-btc_pred = forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail()
-eth_pred = eth_forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail()
+btc_pred = forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail(7)
+eth_pred = eth_forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail(7)
 
 
 btc_pred.columns = ['Date','Price Prediction','Lowest Price Prediction','Highest Price Prediction']
